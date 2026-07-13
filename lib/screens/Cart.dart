@@ -18,11 +18,6 @@ class _CartState extends State<Cart> {
         Expanded(
             flex: 4,
             child: Column(
-              children: [
-                for(Items i in myItems){
-
-                }
-              ],
             ))
       ],
     ),
