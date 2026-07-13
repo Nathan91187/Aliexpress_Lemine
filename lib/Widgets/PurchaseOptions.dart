@@ -9,7 +9,7 @@ class Purchaseoptions extends StatelessWidget {
     final myWidth = MediaQuery.of(context).size.height;
     return InkWell(
       onTap: (){
-      },
+        },
       child: Container(
         height: 0.05 * myWidth,
         color: color,

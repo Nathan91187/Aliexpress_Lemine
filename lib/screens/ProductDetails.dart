@@ -19,6 +19,7 @@ class _ProductdetailsState extends State<Productdetails> {
     if(args == null){
       return const Datanotfound();
     }
+
     int myPrice = int.parse(args['price']);
     String description = args['description'];
     int modifiable = myPrice;
