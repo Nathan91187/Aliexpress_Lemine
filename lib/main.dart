@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mini_e_commerce/screens/Cart.dart';
 import 'package:mini_e_commerce/screens/ProductDetails.dart';
 import 'package:mini_e_commerce/screens/Products.dart';
 void main() {
@@ -13,7 +14,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       routes: {
         '/' :(context) => Products(),
-        'details': (context) => Productdetails()
+        'details': (context) => Productdetails(),
+        'cart' : (context) => Cart()
       },
       theme: ThemeData(
         textTheme: TextTheme(

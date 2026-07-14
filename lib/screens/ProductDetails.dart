@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mini_e_commerce/Datas/CartList.dart';
 import 'package:mini_e_commerce/Datas/Descriptions.dart';
+import 'package:mini_e_commerce/Datas/Items.dart';
 import 'package:mini_e_commerce/Widgets/ModifyAmounts.dart';
 import 'package:mini_e_commerce/Widgets/PurchaseOptions.dart';
 import 'package:mini_e_commerce/screens/DataNotFound.dart';
@@ -22,6 +24,7 @@ class _ProductdetailsState extends State<Productdetails> {
 
     int myPrice = int.parse(args['price']);
     String description = args['description'];
+    String imagePath = args['imagePath'];
     int modifiable = myPrice;
     final myWidth = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -54,7 +57,7 @@ class _ProductdetailsState extends State<Productdetails> {
                       flex: 1,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10),
-                      child: Image.asset(args['imagePath']),
+                      child: Image.asset(imagePath),
                     )
                     ),
                     Expanded(
@@ -66,7 +69,8 @@ class _ProductdetailsState extends State<Productdetails> {
                             children: [
                               Expanded(
                                 flex: 3,
-                              child: Text(args['description'],
+                              child: Text(
+                                  description,
                               style: TextStyle(
                                 fontSize: 0.025 * myWidth,
                                 fontFamily: "Inter",
@@ -111,8 +115,23 @@ class _ProductdetailsState extends State<Productdetails> {
                                     "ETB $myPrice",
                                     style: Theme.of(context).textTheme.titleSmall),
                               ),
-                              Purchaseoptions(info: "Add To Cart", color: Colors.black45, textColor: Colors.redAccent[700]!,),
-                              Purchaseoptions(info: "Buy Now", color: Colors.redAccent[700]!, textColor: Colors.black87,),
+                              Purchaseoptions(
+                                info: "Add To Cart",
+                                color: Colors.black45,
+                                textColor: Colors.redAccent[700]!,
+                                action: (){
+                                  Items item = Items(image: imagePath, description: description,price: myPrice);
+                                  myItems.add(item);
+                                },
+                              ),
+                              Purchaseoptions(
+                                info: "Buy Now",
+                                color: Colors.redAccent[700]!,
+                                textColor: Colors.black87,
+                                action: (){
+
+                                },
+                              ),
                             ]
                         )
                     )
@@ -144,7 +163,17 @@ class _ProductdetailsState extends State<Productdetails> {
               )
             ],
           ),
-        )
+        ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          Navigator.pushNamed(context, 'cart');
+        },
+        backgroundColor: Colors.black87,
+        child: Icon(
+          Icons.shopping_cart,
+          color: Colors.redAccent[700],
+        ),
+      ),
     );
   }
 }

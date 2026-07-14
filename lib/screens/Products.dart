@@ -48,7 +48,9 @@ class Products extends StatelessWidget {
     )
       ),
         floatingActionButton: FloatingActionButton(
-            onPressed: (){},
+            onPressed: (){
+              Navigator.pushNamed(context, 'cart');
+            },
           backgroundColor: Colors.black87,
             child: Icon(
                 Icons.shopping_cart,
