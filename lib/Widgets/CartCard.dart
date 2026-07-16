@@ -17,6 +17,7 @@ class _CartCardState extends State<CartCard> {
   @override
   Widget build(BuildContext context) {
     final myWidth = MediaQuery.of(context).size.width;
+    final myHeight = MediaQuery.of(context).size.height;
     return Card(
       color: Colors.redAccent[700],
       child: Padding(
@@ -26,10 +27,14 @@ class _CartCardState extends State<CartCard> {
           children: [
             Expanded(
               flex: 2,
+                child: Align(
+                    alignment: Alignment.topLeft,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(4),
                   child: Image.asset(widget.image),
-                )),
+                )
+            )
+            ),
             Expanded(
               flex: 6,
               child: Column(
@@ -38,13 +43,16 @@ class _CartCardState extends State<CartCard> {
                           widget.description
                           ,style: TextStyle(
                           color: Colors.black87,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Inter",
                         ),
                         ),
                 Row(
+                  spacing: 0.01 * myWidth,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     ClipRRect(
-                      borderRadius: BorderRadius.circular(2),
+                      borderRadius: BorderRadius.circular(5),
                       child: Container(
                         color: Colors.black87,
                       child: Padding(
@@ -69,7 +77,8 @@ class _CartCardState extends State<CartCard> {
                               child: Text(
                                   "$amount",
                                   style: TextStyle(
-                                    color: Colors.redAccent[700]
+                                    color: Colors.redAccent[700],
+                                    fontFamily: "Inter",
                                   ),
                               ),
                             ),
@@ -92,15 +101,15 @@ class _CartCardState extends State<CartCard> {
                       ),
                     )
                     ),
-                    Container(
-                      color: Colors.black87,
-                      child: Text(
+                      Text(
                         "ETB ${widget.price}",
                         style: TextStyle(
-                          color: Colors.redAccent[700]
+                          color: Colors.black87,
+                          fontSize: 0.015 * myWidth,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Inter",
                         ),
-                      ),
-                    )
+                      )
                   ],
                 )
               ],

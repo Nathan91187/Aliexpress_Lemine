@@ -10,14 +10,38 @@ class Cart extends StatefulWidget {
 }
 
 class _CartState extends State<Cart> {
-  List <String> items = [];
   @override
   Widget build(BuildContext context) {
+    if(myItems.isEmpty){
+      return Scaffold(
+        appBar: AppBar(
+          title: Text("Cart"),
+          leading: IconButton(
+              onPressed:(){
+                Navigator.pop(context);
+              }, 
+              icon: Icon(Icons.arrow_back))
+        ),
+        body: Text("Your cart is empty"),
+      );
+    }
     return Scaffold(
-    body: Row(
+      backgroundColor: Colors.black87,
+      appBar: AppBar(
+          title: Text("Cart"),
+          centerTitle: true,
+          backgroundColor: Colors.redAccent[700],
+          leading: IconButton(
+              onPressed:(){
+                Navigator.pop(context);
+              },
+              icon: Icon(Icons.arrow_back))
+      ),
+    body:
+    Padding(
+      padding: EdgeInsets.all(20),
+      child: Row(
       children: [
-    Column(
-    children: [
     Expanded(
     child: ListView.builder(
       itemCount: myItems.length,
@@ -30,7 +54,6 @@ class _CartState extends State<Cart> {
       },
     ),
     ),
-    ],),
         Expanded(
           flex: 2,
             child: Column(
@@ -43,6 +66,7 @@ class _CartState extends State<Cart> {
             ))
       ],
     ),
+    )
     );
   }
 }

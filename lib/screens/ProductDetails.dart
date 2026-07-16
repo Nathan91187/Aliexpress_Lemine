@@ -122,6 +122,7 @@ class _ProductdetailsState extends State<Productdetails> {
                                 action: (){
                                   Items item = Items(image: imagePath, description: description,price: myPrice);
                                   myItems.add(item);
+                                  print(myItems.length);
                                 },
                               ),
                               Purchaseoptions(
